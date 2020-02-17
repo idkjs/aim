@@ -207,7 +207,7 @@ Make attributes dynamic.
 
 In the following example, the display is switched between Boolean and hidden.
 
-`` `javascript
+```javascript
 type actions =
   | Switch;
 
@@ -235,7 +235,7 @@ render (
   ),
   container
 );
-`` `
+```
 
 ### `boolAttr_ (name, state => trueOrFalse)`
 
@@ -243,7 +243,7 @@ Make logical attributes dynamic.
 
 In the example below, pressing the button toggles the check box on and off.
 
-`` `javascript
+```javascript
 type actions =
   | Switch;
 
@@ -274,7 +274,7 @@ render (
   ),
   container
 );
-`` `
+```
 
 ### `node_ (iterator, keySelector, nodeSelector)`
 
@@ -304,64 +304,4 @@ render (
   ),
   container
 );
-`` `
-
-### `boolAttr_ (name, state => trueOrFalse)`
-
-Make logical attributes dynamic.
-
-In the example below, pressing the button toggles the check box on and off.
-
-`` `javascript
-type actions =
-  | Switch;
-
-render (
-  component (
-    [
-      html (
-        "button",
-        [event ("click", (e, dispatch) => dispatch (Switch))],
-        [text ("button")],
-      ),
-      html (
-        "input",
-        [
-          attr ("type", "checkbox"),
-          // dynamic logical attributes
-          boolAttr _ ("checked", checked => checked),
-        ],
-        [],
-      ),
-    ],
-    update => update (true),
-    (action, update, checked) => {
-      switch (action) {
-      | Switch => update (! Checked)
-      }
-    },
-  ),
-  container
-);
-`` `
-
-### `node_ (iterator, keySelector, nodeSelector)`
-
-Finally, let's talk about the `node_` function.
-
-Use this function to render a dynamic number of elements.
-
-`iterator` is a function that creates an array of states.
-
-`keySelector` is a function that creates a unique key for each of the arrays created by` iterator`.
-
-`nodeSelector` is a function that creates an element for each of the arrays created by` iterator`.
-
-In this example, the number of elements decreases every second.
-
-`` `javascript
-render (
-  component (
-    <>
-      {nodes_ (
-         // increment `count` every second
+```
